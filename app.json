@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "target-react-native",
+    "name": "Target RN",
     "slug": "target-react-native",
+    "scheme": "target-react-native",
     "version": "1.0.0",
     "ios": {
       "bundleIdentifiear": "dev.lsiqueira.targetrn",
@@ -15,6 +16,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#3D44CD"
       }
-    }
+    },
+    "plugins": ["expo-router"]
   }
 }
