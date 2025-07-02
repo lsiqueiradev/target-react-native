@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "target-react-native",
+    "slug": "target-react-native",
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifiear": "dev.lsiqueira.targetrn",
+      "icon": "./assets/icon.png",
+      "bundleIdentifier": "dev.lsiqueira.targetrn"
+    },
+    "android": {
+      "package": "dev.lsiqueira.targetrn",
+      "edgeToEdgeEnabled": true,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#3D44CD"
+      }
+    }
+  }
+}
