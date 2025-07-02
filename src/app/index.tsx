@@ -1,12 +1,13 @@
-import { StatusBar } from "expo-status-bar";
+import { router } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>Target Expo Router</Text>
+
+      <Button title="Nova meta" onPress={() => router.navigate("/target")} />
     </View>
   );
 }
