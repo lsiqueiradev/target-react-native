@@ -17,6 +17,9 @@
         "backgroundColor": "#3D44CD"
       }
     },
-    "plugins": ["expo-router"]
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ]
   }
 }
