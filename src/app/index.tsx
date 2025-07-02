@@ -1,10 +1,9 @@
 import { router } from "expo-router";
-import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
 
 export default function Index() {
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1, justifyContent: "center" }}>
       <Text>Target Expo Router</Text>
 
       <Button title="Nova meta" onPress={() => router.navigate("/target")} />
@@ -19,12 +18,3 @@ export default function Index() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
