@@ -6,6 +6,7 @@ import {
 } from "@expo-google-fonts/rubik";
 import { Stack } from "expo-router";
 
+import { Loading } from "@/components/Loading";
 import { colors } from "@/theme/colors";
 
 export default function RootLayout() {
@@ -16,7 +17,7 @@ export default function RootLayout() {
   });
 
   if (!fontsLoaded) {
-    return;
+    return <Loading />;
   }
 
   return (
