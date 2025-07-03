@@ -40,7 +40,7 @@ export function HomeHeader({ data }: Props) {
         <Summary
           data={data.output}
           icon={{ color: colors.red[400], name: "arrow-downward" }}
-          isLeft
+          isRight
         />
       </View>
     </LinearGradient>
