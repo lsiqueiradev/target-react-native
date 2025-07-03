@@ -23,11 +23,15 @@ export function Option({
       style={[styles.option, isSelected && { backgroundColor: selectedColor }]}
       {...rest}
     >
-      <MaterialIcons name={icon} size={24} color={colors.gray[500]} />
+      <MaterialIcons
+        name={icon}
+        size={24}
+        color={isSelected ? colors.white : colors.gray[500]}
+      />
 
-      <Text
-        style={[styles.title, isSelected && { color: colors.white }]}
-      ></Text>
+      <Text style={[styles.title, isSelected && { color: colors.white }]}>
+        {title}
+      </Text>
     </Pressable>
   );
 }
