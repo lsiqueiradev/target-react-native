@@ -4,10 +4,15 @@ import {
   Rubik_700Bold,
   useFonts,
 } from "@expo-google-fonts/rubik";
+
 import { Stack } from "expo-router";
 
-import { Loading } from "@/components/Loading";
 import { colors } from "@/theme";
+
+import { Loading } from "@/components/Loading";
+import { migrate } from "@/database/migrate";
+import { SQLiteProvider } from "expo-sqlite";
+import { Suspense } from "react";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -21,13 +26,17 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: {
-          backgroundColor: colors.white,
-        },
-      }}
-    />
+    <Suspense fallback={<Loading />}>
+      <SQLiteProvider databaseName="target.db" onInit={migrate} useSuspense>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: {
+              backgroundColor: colors.white,
+            },
+          }}
+        />
+      </SQLiteProvider>
+    </Suspense>
   );
 }
