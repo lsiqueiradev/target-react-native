@@ -4,14 +4,16 @@ import { Button } from "@/components/Button";
 import { CurrencyInput } from "@/components/CurrencyInput";
 import { Input } from "@/components/Input";
 import { PageHeader } from "@/components/PageHeader";
+import { useTargetDatabase } from "@/database/useTargetDatabase";
 import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 
 export default function Target() {
   const [isProcessing, setProcessing] = useState(false);
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState<number | null>(null);
+  const [amount, setAmount] = useState(0);
 
+  const targetDatabase = useTargetDatabase();
   const { id } = useLocalSearchParams<{ id?: string }>();
 
   const handleSave = () => {
@@ -27,8 +29,9 @@ export default function Target() {
     }
   };
 
-  const onCreate = () => {
+  const onCreate = async () => {
     try {
+      await targetDatabase.create({ name, amount });
       Alert.alert("Nova menta", "Meta criada com sucesso!", [
         {
           text: "Ok",
@@ -64,7 +67,7 @@ export default function Target() {
         <CurrencyInput
           label="Valor Alvo (R$)"
           value={amount}
-          onChangeValue={setAmount}
+          onChangeValue={(value) => setAmount(value ?? 0)}
         />
         <Button
           title="Salvar"
