@@ -26,7 +26,7 @@ export function List<T>({
 }: ListProps<T>) {
   return (
     <View style={[styles.container, containerStyle]}>
-      <Text style={styles.title}>Metas</Text>
+      <Text style={styles.title}>{title}</Text>
       <FlatList
         data={data}
         renderItem={renderItem}
