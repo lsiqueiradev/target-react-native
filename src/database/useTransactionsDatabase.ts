@@ -9,6 +9,7 @@ export type TransactionCreate = {
 export type TransactionResponse = {
   id: number;
   target_id: number;
+  amount: number;
   observation: string;
   created_at: Date;
   updated_at: Date;
@@ -20,7 +21,7 @@ export function useTransactionsDatabase() {
   async function create(data: TransactionCreate) {
     const statement = await database.prepareAsync(`
         INSERT INTO transactions
-          (target_id, amount, observatoin)
+          (target_id, amount, observation)
         VALUES
           ($target_id, $amount, $observation)
       `);
