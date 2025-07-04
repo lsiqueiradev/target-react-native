@@ -45,6 +45,7 @@ export default function Transaction() {
     } catch (error) {
       Alert.alert("Erro", "Não foi possível salvar a transação");
       console.log(error);
+    } finally {
       setIsCreating(false);
     }
   };
