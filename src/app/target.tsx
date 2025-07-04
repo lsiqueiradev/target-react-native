@@ -6,7 +6,7 @@ import { Input } from "@/components/Input";
 import { PageHeader } from "@/components/PageHeader";
 import { useTargetDatabase } from "@/database/useTargetDatabase";
 import { router, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Target() {
   const [isProcessing, setProcessing] = useState(false);
@@ -45,6 +45,23 @@ export default function Target() {
       setProcessing(false);
     }
   };
+
+  const fetchDetails = async (id: number) => {
+    try {
+      const response = await targetDatabase.show(id);
+      setName(response?.name ?? "");
+      setAmount(response?.amount ?? 0);
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível carregar os detalhes da meta.");
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchDetails(Number(id));
+    }
+  }, [id]);
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
