@@ -52,7 +52,9 @@ export default function Index() {
       const response = await transactionsDatabase.summary();
 
       return {
-        total: numberToCurrency(response?.input ?? 0 + (response?.output ?? 0)),
+        total: numberToCurrency(
+          (response?.input ?? 0) + (response?.output ?? 0)
+        ),
         input: {
           label: "Entradas",
           value: numberToCurrency(response?.input ?? 0),
